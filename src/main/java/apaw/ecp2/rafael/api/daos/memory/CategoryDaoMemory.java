@@ -1,11 +1,11 @@
-package apaw.ecp2.rafael.api.resources.daos.memory;
+package apaw.ecp2.rafael.api.daos.memory;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.ToIntFunction;
 
-import apaw.ecp2.rafael.api.resources.daos.CategoryDao;
-import apaw.ecp2.rafael.api.resources.entities.Category;
+import apaw.ecp2.rafael.api.daos.CategoryDao;
+import apaw.ecp2.rafael.api.entities.Category;
 
 import static java.lang.Math.toIntExact;
 

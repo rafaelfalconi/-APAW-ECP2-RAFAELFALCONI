@@ -1,10 +1,10 @@
-package apaw.ecp2.rafael.api.resources.daos.memory;
+package apaw.ecp2.rafael.api.daos.memory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import apaw.ecp2.rafael.api.resources.daos.GenericDao;
+import apaw.ecp2.rafael.api.daos.GenericDao;
 
 public abstract class GenericDaoMemory<T> implements GenericDao<T, Long> {
 

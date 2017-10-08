@@ -1,4 +1,4 @@
-package apaw.ecp2.rafael.api.resources.daos;
+package apaw.ecp2.rafael.api.daos;
 
 import java.util.List;
 

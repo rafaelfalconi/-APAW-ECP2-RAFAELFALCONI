@@ -20,7 +20,7 @@ public class Dispatcher {
 
             }
             if(request.isEqualsPath(CategoryResource.CATEGORIES)){
-                response.setBody("[{\"id\":1,\"rank\":1,\"title\":\"Marketing\"},{\"id\":2,\"rank\":1,\"title\":\"Sistemas\"}");
+                response.setBody(categoryResource.categoryList());
             }
         } catch (Exception e) {
             responseError(response, e);

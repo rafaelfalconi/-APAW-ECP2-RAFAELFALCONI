@@ -1,4 +1,4 @@
-package apaw.ecp2.rafael.api.resources.daos;
+package apaw.ecp2.rafael.api.daos;
 
 public abstract class DaoFactory {
     private static DaoFactory factory=null;

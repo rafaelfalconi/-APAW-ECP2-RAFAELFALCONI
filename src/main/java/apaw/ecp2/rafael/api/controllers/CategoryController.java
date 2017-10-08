@@ -1,10 +1,10 @@
-package apaw.ecp2.rafael.api.resources.controllers;
+package apaw.ecp2.rafael.api.controllers;
 
 import java.util.Optional;
 
-import apaw.ecp2.rafael.api.resources.daos.DaoFactory;
-import apaw.ecp2.rafael.api.resources.dtos.CategoryDto;
-import apaw.ecp2.rafael.api.resources.entities.Category;
+import apaw.ecp2.rafael.api.daos.DaoFactory;
+import apaw.ecp2.rafael.api.dtos.CategoryDto;
+import apaw.ecp2.rafael.api.entities.Category;
 
 public class CategoryController {
     

@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import apaw.ecp2.rafael.api.daos.DaoFactory;
+import apaw.ecp2.rafael.api.daos.memory.DaoMemoryFactory;
 import apaw.ecp2.rafael.api.resources.CategoryResource;
-import apaw.ecp2.rafael.api.resources.daos.DaoFactory;
-import apaw.ecp2.rafael.api.resources.daos.memory.DaoMemoryFactory;
 import apaw.ecp2.rafael.http.HttpClientService;
 import apaw.ecp2.rafael.http.HttpMethod;
 import apaw.ecp2.rafael.http.HttpRequest;
