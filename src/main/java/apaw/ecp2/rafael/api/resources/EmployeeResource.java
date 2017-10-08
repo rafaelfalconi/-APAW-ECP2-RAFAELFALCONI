@@ -7,11 +7,13 @@ import apaw.ecp2.rafael.api.resources.exception.EmployeeFieldInvalidException;
 public class EmployeeResource {
     public static final String Employee = "employees";
 
+    public static final String ID = "/{id}";
+
     public void createUsuario(long id, String name, long category) throws EmployeeFieldInvalidException, CategoryIdNotFoundException {
         this.validateField(name);
-        if(!new EmployeeController().createEmployee(id, name, category)) {
+        if (!new EmployeeController().createEmployee(id, name, category)) {
             throw new CategoryIdNotFoundException(Long.toString(category));
-            
+
         }
 
     }

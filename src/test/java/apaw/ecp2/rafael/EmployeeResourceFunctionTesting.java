@@ -37,5 +37,12 @@ public class EmployeeResourceFunctionTesting {
     public void testCreateUser() {
         this.createUser();
     }
+    @Test
+    public void testReadEmployee() {
+        this.createUser();
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(EmployeeResource.Employee).path(EmployeeResource.ID).expandPath("1")
+                .build();
+        assertEquals("{\"id\":1,\"surname\":\"Rafael\",\"category\":\"Marketing\"}", new HttpClientService().httpRequest(request).getBody());
+    }
 
 }
