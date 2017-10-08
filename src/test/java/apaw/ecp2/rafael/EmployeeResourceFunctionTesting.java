@@ -27,22 +27,35 @@ public class EmployeeResourceFunctionTesting {
         new HttpClientService().httpRequest(request);
     }
 
-    public void createUser() {
+    public void createEmployee() {
         this.createCategory();
         request = new HttpRequestBuilder().method(HttpMethod.POST).path(EmployeeResource.Employee).body("1:Rafael:1").build();
         new HttpClientService().httpRequest(request);
     }
-
+    
+    public void createEmployees() {
+        this.createCategory();
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(EmployeeResource.Employee).body("1:Rafael:1").build();
+        new HttpClientService().httpRequest(request);
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(EmployeeResource.Employee).body("2:Rafael:1").build();
+        new HttpClientService().httpRequest(request);
+    }
     @Test
     public void testCreateUser() {
-        this.createUser();
+        this.createEmployee();
     }
     @Test
     public void testReadEmployee() {
-        this.createUser();
+        this.createEmployee();
         request = new HttpRequestBuilder().method(HttpMethod.GET).path(EmployeeResource.Employee).path(EmployeeResource.ID).expandPath("1")
                 .build();
         assertEquals("{\"id\":1,\"surname\":\" Rafael \",\"category\":\" Marketing\"}", new HttpClientService().httpRequest(request).getBody());
+    }
+    @Test 
+    public void testListEmployee() {
+        this.createEmployees();
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(EmployeeResource.Employee).build();
+        assertEquals("[{\"id\":1,\"surname\":\" Rafael \",\"category\":\" Marketing\"}, {\"id\":2,\"surname\":\" Rafael \",\"category\":\" Marketing\"}]", new HttpClientService().httpRequest(request).getBody());
     }
 
 }

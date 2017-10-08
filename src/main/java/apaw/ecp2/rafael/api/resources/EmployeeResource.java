@@ -18,6 +18,9 @@ public class EmployeeResource {
         return optional.orElseThrow(()->new EmployeeIdNotFoundException(Long.toHexString(employeeid)));
         
     }
+    public String employeeList() {
+        return new EmployeeController().employeeList().toString();
+    }
 
     public void createUsuario(long id, String name, long category) throws EmployeeFieldInvalidException, CategoryIdNotFoundException {
         this.validateField(name);
