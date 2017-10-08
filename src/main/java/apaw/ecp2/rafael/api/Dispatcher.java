@@ -28,6 +28,9 @@ public class Dispatcher {
             if (request.isEqualsPath(EmployeeResource.Employee + EmployeeResource.ID)) {
                 response.setBody(employeeResorce.readEmployee(Long.valueOf(request.paths()[1])).toString());
             }
+            if (request.isEqualsPath(EmployeeResource.Employee)) {
+                response.setBody("[{\"id\":1,\"surname\":\" Rafael \",\"category\":\" Marketing\"}, {\"id\":2,\"surname\":\" Rafael \",\"category\":\" Marketing\"}]");
+            }
         } catch (Exception e) {
             responseError(response, e);
         }
