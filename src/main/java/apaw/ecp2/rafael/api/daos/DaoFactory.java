@@ -11,5 +11,6 @@ public abstract class DaoFactory {
         return factory;
     }
     public abstract CategoryDao getCategoryDao();
+    public abstract EmployeeDao geEmployeeDao();
     
 }

@@ -1,14 +1,15 @@
 package apaw.ecp2.rafael.api;
 
 import apaw.ecp2.rafael.api.resources.CategoryResource;
-import apaw.ecp2.rafael.api.resources.UserResource;
+import apaw.ecp2.rafael.api.resources.EmployeeResource;
 import apaw.ecp2.rafael.http.HttpRequest;
 import apaw.ecp2.rafael.http.HttpResponse;
 import apaw.ecp2.rafael.http.HttpStatus;
 
 public class Dispatcher {
     private CategoryResource categoryResource = new CategoryResource();
-    private UserResource userResorce=new UserResource();
+
+    private EmployeeResource userResorce = new EmployeeResource();
 
     private void responseError(HttpResponse response, Exception e) {
         response.setBody("{\"error\":\"" + e + "\"}");
@@ -38,12 +39,11 @@ public class Dispatcher {
                 String categoryTitle = request.getBody().split(":")[2];
                 categoryResource.createCategory(Long.valueOf(categoryId), Integer.valueOf(categoryRank), categoryTitle);
                 response.setStatus(HttpStatus.CREATED);
-            } else if (request.isEqualsPath(UserResource.USERS)) {
-                String id=request.getBody().split(":")[0];
-                String name=request.getBody().split(":")[1];
-                String active=request.getBody().split(":")[2];
-                String category=request.getBody().split(":")[3];
-                userResorce.createUsuario(Long.valueOf(id),name,Boolean.valueOf(active), Long.valueOf(category));
+            } else if (request.isEqualsPath(EmployeeResource.Employee)) {
+                String id = request.getBody().split(":")[0];
+                String name = request.getBody().split(":")[1];
+                String category = request.getBody().split(":")[2];
+                userResorce.createUsuario(Long.valueOf(id), name,  Long.valueOf(category));
                 response.setStatus(HttpStatus.CREATED);
             }
         } catch (Exception e) {
