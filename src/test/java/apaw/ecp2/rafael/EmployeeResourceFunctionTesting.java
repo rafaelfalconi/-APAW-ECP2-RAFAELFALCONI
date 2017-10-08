@@ -29,13 +29,20 @@ public class EmployeeResourceFunctionTesting {
 
     public void createUser() {
         this.createCategory();
-        request = new HttpRequestBuilder().method(HttpMethod.POST).path(EmployeeResource.Employee).body("1:Rafel:1").build();
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(EmployeeResource.Employee).body("1:Rafael:1").build();
         new HttpClientService().httpRequest(request);
     }
 
     @Test
     public void testCreateUser() {
         this.createUser();
+    }
+    @Test
+    public void testReadEmployee() {
+        this.createUser();
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(EmployeeResource.Employee).path(EmployeeResource.ID).expandPath("1")
+                .build();
+        assertEquals("{\"id\":1,\"surname\":\" Rafael \",\"category\":\" Marketing\"}", new HttpClientService().httpRequest(request).getBody());
     }
 
 }
