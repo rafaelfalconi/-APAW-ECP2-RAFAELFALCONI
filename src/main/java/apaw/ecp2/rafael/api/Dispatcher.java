@@ -16,7 +16,8 @@ public class Dispatcher {
     public void doGet(HttpRequest request, HttpResponse response) {
 
         if (request.isEqualsPath(CategoryResource.CATEGORIES + CategoryResource.ID)) {
-            response.setBody("{\"id\":1564.\"rank\":1,\"title\":\"Marketing\"}");
+            response.setBody(categoryResource.readCategory(Long.valueOf(request.paths()[1])));
+           
         }
     }
 
