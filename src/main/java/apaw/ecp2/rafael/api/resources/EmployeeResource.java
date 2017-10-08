@@ -9,6 +9,10 @@ public class EmployeeResource {
 
     public static final String ID = "/{id}";
 
+    public String readEmployee(){
+        return "{\"id\":1,\"surname\":\"Rafael\",\"category\":\"Marketing\"}";
+    }
+
     public void createUsuario(long id, String name, long category) throws EmployeeFieldInvalidException, CategoryIdNotFoundException {
         this.validateField(name);
         if (!new EmployeeController().createEmployee(id, name, category)) {

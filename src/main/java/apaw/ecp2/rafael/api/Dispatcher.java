@@ -9,7 +9,7 @@ import apaw.ecp2.rafael.http.HttpStatus;
 public class Dispatcher {
     private CategoryResource categoryResource = new CategoryResource();
 
-    private EmployeeResource userResorce = new EmployeeResource();
+    private EmployeeResource employeeResorce = new EmployeeResource();
 
     private void responseError(HttpResponse response, Exception e) {
         response.setBody("{\"error\":\"" + e + "\"}");
@@ -26,7 +26,7 @@ public class Dispatcher {
                 response.setBody(categoryResource.categoryList().toString());
             }
             if (request.isEqualsPath(EmployeeResource.Employee + EmployeeResource.ID)) {
-                response.setBody("{\"id\":1,\"surname\":\"Rafael\",\"category\":\"Marketing\"}");
+                response.setBody(employeeResorce.readEmployee());
             }
         } catch (Exception e) {
             responseError(response, e);
@@ -46,7 +46,7 @@ public class Dispatcher {
                 String id = request.getBody().split(":")[0];
                 String name = request.getBody().split(":")[1];
                 String category = request.getBody().split(":")[2];
-                userResorce.createUsuario(Long.valueOf(id), name, Long.valueOf(category));
+                employeeResorce.createUsuario(Long.valueOf(id), name, Long.valueOf(category));
                 response.setStatus(HttpStatus.CREATED);
             }
         } catch (Exception e) {
