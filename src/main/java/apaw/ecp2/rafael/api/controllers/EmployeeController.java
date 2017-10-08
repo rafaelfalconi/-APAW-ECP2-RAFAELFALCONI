@@ -1,6 +1,9 @@
 package apaw.ecp2.rafael.api.controllers;
 
+import java.util.Optional;
+
 import apaw.ecp2.rafael.api.daos.DaoFactory;
+import apaw.ecp2.rafael.api.dtos.EmployeeDto;
 import apaw.ecp2.rafael.api.entities.Category;
 import apaw.ecp2.rafael.api.entities.Employee;
 
@@ -12,6 +15,16 @@ public class EmployeeController {
             return true;
         }else {
             return false;
+        }
+    }
+    private boolean existEmployee(long employeeId) {
+        return DaoFactory.getFactory().geEmployeeDao().read(employeeId) !=null;
+    }
+    public Optional<EmployeeDto> readEmployee(long employeeId){
+        if(existEmployee(employeeId)) {
+            return Optional.of(new EmployeeDto(DaoFactory.getFactory().geEmployeeDao().read(employeeId)));
+        }else {
+            return Optional.empty();
         }
     }
 }

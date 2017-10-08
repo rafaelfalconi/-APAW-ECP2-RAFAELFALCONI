@@ -26,7 +26,7 @@ public class Dispatcher {
                 response.setBody(categoryResource.categoryList().toString());
             }
             if (request.isEqualsPath(EmployeeResource.Employee + EmployeeResource.ID)) {
-                response.setBody(employeeResorce.readEmployee());
+                response.setBody(employeeResorce.readEmployee(Long.valueOf(request.paths()[1])).toString());
             }
         } catch (Exception e) {
             responseError(response, e);
