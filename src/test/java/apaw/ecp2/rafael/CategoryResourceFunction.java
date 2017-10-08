@@ -36,4 +36,10 @@ public class CategoryResourceFunction {
                .path(CategoryResource.ID).expandPath("1").build();
        assertEquals("{\"id\":1,\"rank\":1,\"title\":\"Marketing\"}",new HttpClientService().httpRequest(request).getBody());
     }
+    @Test
+    public void testCategoryList() {
+        this.createCategory();
+       request= new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES).build();
+       assertEquals("[{\"id\":1,\"rank\":1,\"title\":\"Marketing\"},{\"id\":2,\"rank\":1,\"title\":\"Sistemas\"}",new HttpClientService().httpRequest(request).getBody());
+    }
 }

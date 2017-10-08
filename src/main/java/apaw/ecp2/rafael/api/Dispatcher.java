@@ -19,6 +19,9 @@ public class Dispatcher {
                 response.setBody(categoryResource.readCategory(Long.valueOf(request.paths()[1])).toString());
 
             }
+            if(request.isEqualsPath(CategoryResource.CATEGORIES)){
+                response.setBody("[{\"id\":1,\"rank\":1,\"title\":\"Marketing\"},{\"id\":2,\"rank\":1,\"title\":\"Sistemas\"}");
+            }
         } catch (Exception e) {
             responseError(response, e);
         }
