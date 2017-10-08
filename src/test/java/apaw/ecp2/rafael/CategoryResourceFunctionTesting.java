@@ -13,7 +13,7 @@ import apaw.ecp2.rafael.http.HttpMethod;
 import apaw.ecp2.rafael.http.HttpRequest;
 import apaw.ecp2.rafael.http.HttpRequestBuilder;
 
-public class CategoryResourceFunction {
+public class CategoryResourceFunctionTesting {
     private HttpRequest request;
 
     @Before

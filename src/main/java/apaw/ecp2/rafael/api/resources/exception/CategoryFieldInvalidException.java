@@ -9,8 +9,8 @@ public class CategoryFieldInvalidException extends Exception {
     public CategoryFieldInvalidException(String detail) {
         super(DESCRIPTION + "." + detail);
     }
-    
-    public CategoryFieldInvalidException(){
+
+    public CategoryFieldInvalidException() {
         this("");
     }
 }
