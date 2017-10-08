@@ -19,7 +19,7 @@ public class Dispatcher {
                 response.setBody(categoryResource.readCategory(Long.valueOf(request.paths()[1])).toString());
 
             }
-            if(request.isEqualsPath(CategoryResource.CATEGORIES)){
+            if (request.isEqualsPath(CategoryResource.CATEGORIES)) {
                 response.setBody(categoryResource.categoryList().toString());
             }
         } catch (Exception e) {
@@ -36,7 +36,8 @@ public class Dispatcher {
                 String categoryTitle = request.getBody().split(":")[2];
                 categoryResource.createCategory(Long.valueOf(categoryId), Integer.valueOf(categoryRank), categoryTitle);
                 response.setStatus(HttpStatus.CREATED);
-
+            } else if (request.isEqualsPath("users")) {
+                response.setStatus(HttpStatus.CREATED);
             }
         } catch (Exception e) {
             responseError(response, e);
