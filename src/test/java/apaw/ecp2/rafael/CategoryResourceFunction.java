@@ -15,6 +15,7 @@ import apaw.ecp2.rafael.http.HttpRequestBuilder;
 
 public class CategoryResourceFunction {
     private HttpRequest request;
+
     @Before
     public void before() {
         DaoFactory.setFactory(new DaoMemoryFactory());
@@ -23,23 +24,34 @@ public class CategoryResourceFunction {
     public void createCategory() {
         request = new HttpRequestBuilder().method(HttpMethod.POST).path(CategoryResource.CATEGORIES).body("1:1:Marketing").build();
         new HttpClientService().httpRequest(request);
+    }
+
+    public void createCategories() {
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(CategoryResource.CATEGORIES).body("1:1:Marketing").build();
+        new HttpClientService().httpRequest(request);
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(CategoryResource.CATEGORIES).body("2:2:Logistica").build();
+        new HttpClientService().httpRequest(request);
 
     }
+
     @Test
     public void testCreateCategory() {
         this.createCategory();
     }
+
     @Test
     public void testReadCategory() {
         this.createCategory();
-       request= new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES)
-               .path(CategoryResource.ID).expandPath("1").build();
-       assertEquals("{\"id\":1,\"rank\":1,\"title\":\"Marketing\"}",new HttpClientService().httpRequest(request).getBody());
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES).path(CategoryResource.ID)
+                .expandPath("1").build();
+        assertEquals("{\"id\":1,\"rank\":1,\"title\":\"Marketing\"}", new HttpClientService().httpRequest(request).getBody());
     }
+
     @Test
     public void testCategoryList() {
-        this.createCategory();
-       request= new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES).build();
-       assertEquals("[{\"id\":1,\"rank\":1,\"title\":\"Marketing\"},{\"id\":2,\"rank\":1,\"title\":\"Sistemas\"}",new HttpClientService().httpRequest(request).getBody());
+        this.createCategories();
+        request = new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES).build();
+        assertEquals("[{\"id\":1,\"rank\":1,\"title\":\"Marketing\"}, {\"id\":2,\"rank\":2,\"title\":\"Logistica\"}]",
+                new HttpClientService().httpRequest(request).getBody());
     }
 }

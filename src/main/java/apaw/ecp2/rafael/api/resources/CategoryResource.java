@@ -19,7 +19,8 @@ public class CategoryResource {
         
     }
     public String categoryList() {
-       return "[{\"id\":1,\"rank\":1,\"title\":\"Marketing\"},{\"id\":2,\"rank\":1,\"title\":\"Sistemas\"}";
+        return new CategoryController().categoryList().toString();
+     
     }
     public void createCategory(long id, int rank, String title) throws CategoryFieldInvalidException {
         this.validateField(title);

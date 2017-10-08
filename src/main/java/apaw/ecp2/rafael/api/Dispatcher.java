@@ -20,7 +20,7 @@ public class Dispatcher {
 
             }
             if(request.isEqualsPath(CategoryResource.CATEGORIES)){
-                response.setBody(categoryResource.categoryList());
+                response.setBody(categoryResource.categoryList().toString());
             }
         } catch (Exception e) {
             responseError(response, e);
