@@ -19,6 +19,9 @@ public class Dispatcher {
                 response.setBody(categoryResource.readCategory(Long.valueOf(request.paths()[1])).toString());
 
             }
+            if(request.isEqualsPath(CategoryResource.CATEGORIES)){
+                response.setBody(categoryResource.categoryList().toString());
+            }
         } catch (Exception e) {
             responseError(response, e);
         }

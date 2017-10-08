@@ -1,6 +1,6 @@
-package apaw.ecp2.rafael.api.resources.dtos;
+package apaw.ecp2.rafael.api.dtos;
 
-import apaw.ecp2.rafael.api.resources.entities.Category;
+import apaw.ecp2.rafael.api.entities.Category;
 
 public class CategoryDto {
     private long id;

@@ -2,8 +2,8 @@ package apaw.ecp2.rafael.api.resources;
 
 import java.util.Optional;
 
-import apaw.ecp2.rafael.api.resources.controllers.CategoryController;
-import apaw.ecp2.rafael.api.resources.dtos.CategoryDto;
+import apaw.ecp2.rafael.api.controllers.CategoryController;
+import apaw.ecp2.rafael.api.dtos.CategoryDto;
 import apaw.ecp2.rafael.api.resources.exception.CategoryFieldInvalidException;
 import apaw.ecp2.rafael.api.resources.exception.CategoryIdNotFoundException;
 
@@ -17,6 +17,10 @@ public class CategoryResource {
         Optional<CategoryDto> optional=new CategoryController().readCategory(id);
         return optional.orElseThrow(()->new CategoryIdNotFoundException(Long.toString(id)));
         
+    }
+    public String categoryList() {
+        return new CategoryController().categoryList().toString();
+     
     }
     public void createCategory(long id, int rank, String title) throws CategoryFieldInvalidException {
         this.validateField(title);

@@ -1,4 +1,4 @@
-package apaw.ecp2.rafael.api.resources.entities;
+package apaw.ecp2.rafael.api.entities;
 
 import java.util.Calendar;
 
