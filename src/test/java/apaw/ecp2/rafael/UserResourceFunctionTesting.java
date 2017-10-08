@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import apaw.ecp2.rafael.api.resources.CategoryResource;
 import apaw.ecp2.rafael.http.HttpClientService;
 import apaw.ecp2.rafael.http.HttpMethod;
 import apaw.ecp2.rafael.http.HttpRequest;
@@ -18,6 +17,11 @@ public class UserResourceFunctionTesting {
     public void createUser() {
         request = new HttpRequestBuilder().method(HttpMethod.POST).path("users").body("1:Rafel:true:1").build();
         new HttpClientService().httpRequest(request);
+    }
+
+    @Test
+    public void testCreateUser() {
+        this.createUser();
     }
 
 }
