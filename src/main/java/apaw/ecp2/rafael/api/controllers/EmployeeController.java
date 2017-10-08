@@ -1,5 +1,7 @@
 package apaw.ecp2.rafael.api.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import apaw.ecp2.rafael.api.daos.DaoFactory;
@@ -26,5 +28,13 @@ public class EmployeeController {
         }else {
             return Optional.empty();
         }
+    }
+    public List<EmployeeDto> employeeList(){
+        List<EmployeeDto> employeeDtoList=new ArrayList<>();
+        List<Employee> employees=DaoFactory.getFactory().geEmployeeDao().findAll();
+        for(Employee employee: employees) {
+            employeeDtoList.add(new EmployeeDto(employee));
+        }
+        return employeeDtoList;
     }
 }

@@ -19,7 +19,7 @@ public class EmployeeResource {
         
     }
     public String employeeList() {
-        return "[{\"id\":1,\"surname\":\" Rafael \",\"category\":\" Marketing\"}, {\"id\":2,\"surname\":\" Rafael \",\"category\":\" Marketing\"}]";
+        return new EmployeeController().employeeList().toString();
     }
 
     public void createUsuario(long id, String name, long category) throws EmployeeFieldInvalidException, CategoryIdNotFoundException {
