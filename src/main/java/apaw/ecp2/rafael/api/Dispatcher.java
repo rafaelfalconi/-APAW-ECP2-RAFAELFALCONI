@@ -14,11 +14,15 @@ public class Dispatcher {
     }
 
     public void doGet(HttpRequest request, HttpResponse response) {
+        try {
+            if (request.isEqualsPath(CategoryResource.CATEGORIES + CategoryResource.ID)) {
+                response.setBody(categoryResource.readCategory(Long.valueOf(request.paths()[1])).toString());
 
-        if (request.isEqualsPath(CategoryResource.CATEGORIES + CategoryResource.ID)) {
-            response.setBody(categoryResource.readCategory(Long.valueOf(request.paths()[1])));
-           
+            }
+        } catch (Exception e) {
+            responseError(response, e);
         }
+
     }
 
     public void doPost(HttpRequest request, HttpResponse response) {

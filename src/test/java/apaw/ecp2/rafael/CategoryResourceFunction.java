@@ -21,7 +21,7 @@ public class CategoryResourceFunction {
     }
 
     public void createCategory() {
-        request = new HttpRequestBuilder().method(HttpMethod.POST).path(CategoryResource.CATEGORIES).body("1546:1:marketing").build();
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(CategoryResource.CATEGORIES).body("1:1:Marketing").build();
         new HttpClientService().httpRequest(request);
 
     }
@@ -31,8 +31,9 @@ public class CategoryResourceFunction {
     }
     @Test
     public void testReadCategory() {
+        this.createCategory();
        request= new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES)
-               .path(CategoryResource.ID).expandPath("1564").build();
-       assertEquals("{\"id\":1564.\"rank\":1,\"title\":\"Marketing\"}",new HttpClientService().httpRequest(request).getBody());
+               .path(CategoryResource.ID).expandPath("1").build();
+       assertEquals("{\"id\":1,\"rank\":1,\"title\":\"Marketing\"}",new HttpClientService().httpRequest(request).getBody());
     }
 }
