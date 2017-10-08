@@ -13,13 +13,20 @@ public class Dispatcher {
         response.setStatus(HttpStatus.BAD_REQUEST);
     }
 
+    public void doGet(HttpRequest request, HttpResponse response) {
+
+        if (request.isEqualsPath(CategoryResource.CATEGORIES + CategoryResource.ID)) {
+            response.setBody("{\"id\":1564.\"rank\":1,\"title\":\"Marketing\"}");
+        }
+    }
+
     public void doPost(HttpRequest request, HttpResponse response) {
         try {
             if (request.isEqualsPath(CategoryResource.CATEGORIES)) {
-                String categoryId= request.getBody().split(":")[0];
-                String categoryRank= request.getBody().split(":")[1];
-                String categoryTitle= request.getBody().split(":")[2];
-                categoryResource.createCategory(Long.valueOf(categoryId),Integer.valueOf(categoryRank),categoryTitle);
+                String categoryId = request.getBody().split(":")[0];
+                String categoryRank = request.getBody().split(":")[1];
+                String categoryTitle = request.getBody().split(":")[2];
+                categoryResource.createCategory(Long.valueOf(categoryId), Integer.valueOf(categoryRank), categoryTitle);
                 response.setStatus(HttpStatus.CREATED);
 
             }

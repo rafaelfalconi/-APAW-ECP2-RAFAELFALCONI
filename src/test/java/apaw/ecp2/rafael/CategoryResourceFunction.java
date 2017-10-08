@@ -2,8 +2,12 @@ package apaw.ecp2.rafael;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import apaw.ecp2.rafael.api.resources.CategoryResource;
+import apaw.ecp2.rafael.api.resources.daos.DaoFactory;
+import apaw.ecp2.rafael.api.resources.daos.memory.DaoMemoryFactory;
 import apaw.ecp2.rafael.http.HttpClientService;
 import apaw.ecp2.rafael.http.HttpMethod;
 import apaw.ecp2.rafael.http.HttpRequest;
@@ -11,9 +15,13 @@ import apaw.ecp2.rafael.http.HttpRequestBuilder;
 
 public class CategoryResourceFunction {
     private HttpRequest request;
+    @Before
+    public void before() {
+        DaoFactory.setFactory(new DaoMemoryFactory());
+    }
 
     public void createCategory() {
-        request = new HttpRequestBuilder().method(HttpMethod.POST).path("categories").body("1:test").build();
+        request = new HttpRequestBuilder().method(HttpMethod.POST).path(CategoryResource.CATEGORIES).body("1546:1:marketing").build();
         new HttpClientService().httpRequest(request);
 
     }
@@ -21,5 +29,10 @@ public class CategoryResourceFunction {
     public void testCreateCategory() {
         this.createCategory();
     }
-
+    @Test
+    public void testReadCategory() {
+       request= new HttpRequestBuilder().method(HttpMethod.GET).path(CategoryResource.CATEGORIES)
+               .path(CategoryResource.ID).expandPath("1564").build();
+       assertEquals("{\"id\":1564.\"rank\":1,\"title\":\"Marketing\"}",new HttpClientService().httpRequest(request).getBody());
+    }
 }

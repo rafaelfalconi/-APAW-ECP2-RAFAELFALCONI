@@ -4,7 +4,9 @@ import apaw.ecp2.rafael.api.resources.controllers.CategoryController;
 import apaw.ecp2.rafael.api.resources.exception.CategoryFieldInvalidException;
 
 public class CategoryResource {
+    
     public static final String CATEGORIES = "categories";
+    public static final String ID= "/{id}";
 
     public void createCategory(long id, int rank, String title) throws CategoryFieldInvalidException {
         this.validateField(title);
